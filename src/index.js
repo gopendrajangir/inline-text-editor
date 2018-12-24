@@ -1,12 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import InlineEditor from './components/inline-editor';
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+class AppWrapper extends React.Component {
+    render() {
+        return (
+            <div>
+                <InlineEditor
+                    height={50}
+                    width={600}
+                    text="So, this is the default text"
+                    truncate
+                    charLimit={20}
+                    onSave={() => {
+                        console.log('Saved');
+                    }}
+                />
+            </div>
+        );
+    }
+};
+
+ReactDOM.render(<AppWrapper />, document.getElementById('root'));
